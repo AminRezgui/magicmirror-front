@@ -3,8 +3,9 @@ import { useState, useEffect } from "react";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import "../../App.css";
 import axios from "axios";
+import calendar2 from "../../assets/icons/calendar.png";
 
-function Calendar({ userid }) {
+function Calendar({ userid, count }) {
   const [holidays, setholidays] = useState([]);
   const rows = [1, 2, 3, 4];
   const [position, setPosition] = useState(null);
@@ -42,8 +43,8 @@ function Calendar({ userid }) {
         setCalendar(response.data);
         handlePosition(response.data.position);
       })
-      .catch((e) => console.log("eeeeeeee", e));
-  }, [userid]);
+      .catch((e) => console.log(e));
+  }, [userid, count]);
   /* useEffect(() => {
     axios
       .get(
@@ -71,16 +72,7 @@ function Calendar({ userid }) {
     <>
       {true ? (
         <div className="Component" style={{ order: position }}>
-          <div className="calendarHeader">Tunisia Holidays</div>
-          {holidays.map((el) => (
-            <div className="dayrow">
-              <div className="col">
-                <EventAvailableIcon />
-              </div>
-              <div className="col">{el.name}</div>
-              <div id="date">{el.date}</div>
-            </div>
-          ))}
+          <img height="200px" width="300px" src={calendar2} />
         </div>
       ) : (
         <div className="emptyComponent" style={{ order: position }}></div>

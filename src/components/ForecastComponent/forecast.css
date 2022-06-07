@@ -1,5 +1,5 @@
-.header{
-    text-align: center;
+.headerr{
+    text-align: right;
     border-bottom: 1px solid #888888;
     padding: 10px 0px;
     margin-bottom: 10px;
@@ -8,5 +8,5 @@
 .row{
     display: flex;
     justify-content: space-around;
-    padding: 12px 0px;
+    padding: 8px 0px;
 }

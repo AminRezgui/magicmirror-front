@@ -3,7 +3,11 @@ import { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
 import "../../App.css";
 import axios from "axios";
-function Forecast({ userid }) {
+import ariana from "../../assets/icons/ariana.png";
+import paris from "../../assets/icons/paris.png";
+import madrid from "../../assets/icons/madrid.png";
+
+function Forecast({ userid, count }) {
   const [forecast, setForecast] = useState({});
   const rows = [1, 2, 3, 4];
   const [position, setPosition] = useState(null);
@@ -40,22 +44,23 @@ function Forecast({ userid }) {
         setForecast(response.data);
         handlePosition(response.data.position);
       })
-      .catch((e) => console.log("eeeeeeee", e));
-  }, [userid]);
+      .catch((e) => console.log(e));
+  }, [userid, count]);
+  console.log("azertyu : ", forecast);
 
   return (
     <>
       {forecast.active ? (
-        <div className="Component" style={{ order: position }}>
-          <div className="header">forecast</div>
-          {rows.map((day) => (
-            <div className="row">
-              <div>{day}</div>
-              <div>{day}</div>
-              <div>{day}</div>
-              <div>{day}</div>
-            </div>
-          ))}
+        <div className="Component" style={{ order: position, padding: 0 }}>
+          {forecast.location === "Ariana, Tunisia" && (
+            <img height="250px" width="250px" src={ariana} />
+          )}
+          {forecast.location === "Madrid, Spain" && (
+            <img height="250px" width="250px" src={madrid} />
+          )}
+          {forecast.location === "Paris, France" && (
+            <img height="250px" width="250px" src={paris} />
+          )}
         </div>
       ) : (
         <div className="emptyComponent" style={{ order: position }}></div>

@@ -3,9 +3,9 @@ import AnalogClock from "analog-clock-react";
 import axios from "axios";
 import "../../App.css";
 
-function CustomClock({ userid }) {
+function CustomClock({ clock }) {
   const [value, setValue] = useState(new Date());
-  const [clock, setclock] = useState({});
+  //const [clock, setclock] = useState({});
   const [position, setPosition] = useState(null);
 
   const handlePosition = (pos) => {
@@ -33,15 +33,15 @@ function CustomClock({ userid }) {
         break;
     }
   };
-  useEffect(() => {
+  /*   useEffect(() => {
     axios
       .get(`http://localhost:3001/private/getclock?userid=${userid}`)
       .then((response) => {
         setclock(response.data);
         handlePosition(response.data.position);
       })
-      .catch((e) => console.log("eeeeeeee", e));
-  }, [userid]);
+      .catch((e) => console.log(e));
+  }, [userid]); */
   useEffect(() => {
     const interval = setInterval(() => setValue(new Date()), 1000);
 
@@ -62,19 +62,18 @@ function CustomClock({ userid }) {
       hour: "#ffffff",
     },
   };
-  console.log("jkg", userid);
   return (
     <>
       {clock.active ? (
-        <div className="Component" style={{ order: 1 }}>
+        <div className="Component" style={{ order: clock.position }}>
           {clock.isdigital ? (
-            <div style={{ padding: "30px" }}>
-              <AnalogClock {...options} />
+            <div style={{ padding: "30px", textAlign: "center" }}>
+              <h1>{value.toTimeString().slice(0, 8)}</h1>
+              <h2>{value.toDateString()}</h2>
             </div>
           ) : (
             <div style={{ padding: "30px" }}>
-              <h1>{value.toTimeString().slice(0, 8)}</h1>
-              <h2>{value.toDateString()}</h2>
+              <AnalogClock {...options} />
             </div>
           )}
         </div>

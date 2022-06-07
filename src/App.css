@@ -3,9 +3,10 @@
   background-color: #000000;
   color: aliceblue;
   height:100vh;
-  border: 3px solid #FFFFFF;
+  width: 100vw;
   display: flex;
   flex-direction: column;
+  font-family: 'Roboto';
 }
 .Col {
   width: 33vw;
@@ -16,10 +17,10 @@
 .Component {
   height: fit-content;
   min-height: 30vh;
-  width: 33vw;
+  padding: 20px;
+  max-width:600px;
 }
 .emptyComponent{
-  border: 1px solid #FFFFFF;
   min-height: 30vh;
   width: 33vw;
 }
@@ -29,12 +30,10 @@
   flex-wrap: wrap;
   width: 100vw;
   height: 80vh;
-  border: 1px solid white;
 }
 .buttomRow{
   height: 20vh;
   width: 100vw;
-  border: 1px solid white;
 }
 
 .App-logo {
@@ -48,16 +47,7 @@
   }
 }
 
-.App-header {
-  background-color: #444444;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  justify-content: left;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+
 
 .App-link {
   color: #61dafb;

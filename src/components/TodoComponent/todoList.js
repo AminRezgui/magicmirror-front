@@ -15,7 +15,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
-function Todo({ userid }) {
+function Todo({ userid, count }) {
   const [todo, setTodo] = useState({});
   const [position, setPosition] = useState(null);
   const handlePosition = (pos) => {
@@ -50,7 +50,7 @@ function Todo({ userid }) {
         setTodo(response.data);
         handlePosition(response.data.position);
       });
-  }, [userid]);
+  }, [userid, count]);
   console.log("bbtodo", position);
   return (
     <>

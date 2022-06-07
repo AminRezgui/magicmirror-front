@@ -2,16 +2,16 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import "./compliments.css";
 
-function Compliments({ userid }) {
+function Compliments({ userid, count }) {
   const [position, setPosition] = useState(null);
   const [compliment, setcompliment] = useState({});
   const compliments = [
     "Have a nice day",
-    "You look handsome today",
+    "You look handsome",
     "you can do it",
     "mar7bee biik ",
-    "welcome back to life",
-    "Good moooooooooooorning",
+    "welcome to life",
+    "Good moooorning",
   ];
   const handlePosition = (pos) => {
     switch (pos) {
@@ -45,7 +45,7 @@ function Compliments({ userid }) {
         setcompliment(response.data);
         handlePosition(response.data.position);
       });
-  }, [userid]);
+  }, [userid, count]);
   var count = 0;
   const [value, setValue] = useState("Welcome to DMerji Mirror");
   useEffect(() => {
@@ -58,7 +58,6 @@ function Compliments({ userid }) {
       clearInterval(interval);
     };
   }, []);
-  console.log("cccc", position);
   return (
     <>
       {compliment.active ? (
